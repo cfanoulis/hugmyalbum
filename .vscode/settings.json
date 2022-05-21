@@ -9,5 +9,5 @@
 	"[prisma]": {
 		"editor.formatOnSave": true
 	},
-	"javascript.preferences.importModuleSpecifierEnding": "auto"
+	"javascript.preferences.importModuleSpecifierEnding": "minimal"
 }
