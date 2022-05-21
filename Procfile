@@ -1,1 +1,1 @@
-web: bin/start-nginx node heroku-start.mjs
+web: bin/start-nginx node heroku-start.js
