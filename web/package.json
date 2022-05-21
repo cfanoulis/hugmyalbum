@@ -1,0 +1,27 @@
+{
+	"name": "web",
+	"version": "0.0.0",
+	"private": true,
+	"browserslist": {
+		"development": [
+			"last 1 version"
+		],
+		"production": "last 5 versions and not dead and >0.01%"
+	},
+	"dependencies": {
+		"@redwoodjs/router": "^1.4.2",
+		"@redwoodjs/web": "^1.4.2",
+		"@types/lodash-es": "^4.17.6",
+		"canvas-constructor": "^5.0.2",
+		"lodash-es": "^4.17.21",
+		"prop-types": "15.8.1",
+		"react": "17.0.2",
+		"react-dom": "17.0.2"
+	},
+	"devDependencies": {
+		"autoprefixer": "^10.4.5",
+		"postcss": "^8.4.13",
+		"postcss-loader": "^6.2.1",
+		"tailwindcss": "^3.0.24"
+	}
+}

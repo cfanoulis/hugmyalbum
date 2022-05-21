@@ -1,0 +1,37 @@
+{
+	"private": true,
+	"workspaces": {
+		"packages": [
+			"api",
+			"web",
+			"packages/*"
+		]
+	},
+	"devDependencies": {
+		"@sapphire/prettier-config": "^1.4.3"
+	},
+	"scripts": {
+		"lint": "eslint --fix **/* --ext ts,tsx,js,jsx",
+		"format": "prettier --write **/*",
+		"fmt": "yarn format",
+		"build": "rw build",
+		"start": "node index.js"
+	},
+	"eslintConfig": {
+		"extends": "@redwoodjs/eslint-config",
+		"root": true
+	},
+	"engines": {
+		"node": ">=14.19 <=16.x",
+		"yarn": ">=1.15"
+	},
+	"prisma": {
+		"seed": "yarn rw exec seed"
+	},
+	"packageManager": "yarn@3.2.0",
+	"prettier": "@sapphire/prettier-config",
+	"dependencies": {
+		"@redwoodjs/core": "^1.4.2",
+		"pm2": "^5.2.0"
+	}
+}

@@ -1,0 +1,8 @@
+.redwood
+.yarn
+node_modules
+*.env*
+.gitignore
+.nvmrc
+*.toml
+yarn.lock

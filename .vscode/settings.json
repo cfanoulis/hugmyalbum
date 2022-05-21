@@ -1,0 +1,13 @@
+{
+	"editor.tabSize": 4,
+	"editor.useTabStops": true,
+	"files.trimTrailingWhitespace": true,
+	"editor.formatOnSave": false,
+	"editor.codeActionsOnSave": {
+		"source.fixAll.eslint": true
+	},
+	"[prisma]": {
+		"editor.formatOnSave": true
+	},
+	"javascript.preferences.importModuleSpecifierEnding": "auto"
+}
