@@ -1,5 +1,4 @@
 import { render } from '@redwoodjs/testing/web';
-
 import GeneratorPage from './GeneratorPage';
 
 //   Improve this test with help from the Redwood Testing Doc:
