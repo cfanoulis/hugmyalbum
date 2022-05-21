@@ -1,6 +1,5 @@
 import { render } from '@redwoodjs/testing/web';
-
-import ChandlerGenerator from './ChandlerGenerator';
+import ChandlerCanvas from './ChandlerCanvas';
 
 //   Improve this test with help from the Redwood Testing Doc:
 //    https://redwoodjs.com/docs/testing#testing-components
@@ -8,7 +7,7 @@ import ChandlerGenerator from './ChandlerGenerator';
 describe('ChandlerGenerator', () => {
 	it('renders successfully', () => {
 		expect(() => {
-			render(<ChandlerGenerator />);
+			render(<ChandlerCanvas show />);
 		}).not.toThrow();
 	});
 });

@@ -1,26 +1,58 @@
 import { MetaTags } from '@redwoodjs/web';
 import { debounce } from 'lodash-es';
 import { useEffect, useRef, useState } from 'react';
-import ChandlerGenerator from '../../components/ChandlerGenerator/ChandlerGenerator';
+import ChandlerCanvas from 'src/components/ChandlerGenerator/ChandlerCanvas';
 
 const GeneratorPage = () => {
 	const inputElem = useRef<HTMLInputElement>(null);
-	const [spotifyUrl, setSpotifyUrl] = useState('');
 
-	const handleUpdate = debounce((event: Event) => {
-		setSpotifyUrl((event.target as HTMLInputElement).value ?? '');
+	const [error, setError] = useState<boolean | string>(false);
+	const [coverArtBlob, setCoverArt] = useState<Blob>();
+
+	const handleInputUpdate = debounce(async (event: Event) => {
+		setCoverArt(undefined);
+		setError(false);
+
+		const albumUrl = (event.target as HTMLInputElement).value ?? false;
+		if (!albumUrl) return;
+
+		// get album cover art from spotify API
+		const coverArtUrlReq = await fetch('api/getSpotifyAlbumArt', {
+			method: 'POST',
+			body: albumUrl
+		});
+		if (coverArtUrlReq.status !== 200) {
+			setError(await coverArtUrlReq.text());
+			return;
+		}
+
+		// Get img data
+		const coverArtBlobReq = await fetch(await coverArtUrlReq.text());
+		if (coverArtBlobReq.status !== 200) {
+			setError(await coverArtUrlReq.text());
+			return;
+		}
+
+		setCoverArt(await coverArtBlobReq.blob());
 	}, 750);
 
 	useEffect(() => {
-		inputElem.current.addEventListener('input', handleUpdate);
+		inputElem.current.addEventListener('input', handleInputUpdate);
 		// we **only** want this to hook the listener on the first load
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
+
 	return (
 		<div className="h-screen w-screen flex flex-col lg:flex-row lg:justify-center lg:items-center break-words p-2">
-			<MetaTags title="Generator" description="Chandler loves your music taste so much" />
+			<MetaTags
+				title="Chandler, hug my album"
+				description="Chandler wants some music to vide to. Give him reccomendations and see him jam to them"
+				author="Charalampos Fanoulis"
+			/>
+
 			<div className="lg:mr-8 mb-8 flex flex-col">
 				<h1 className="font-bold text-2xl mb-4">Let Chandler hug your favourite album</h1>
+
 				<label htmlFor="spotifyInput" className="text-xs">
 					Spotify album URL
 				</label>
@@ -31,17 +63,25 @@ const GeneratorPage = () => {
 					type="url"
 					className="align-right bg-gray-50 lg:p-2 p-1 mb-6 border-b-2 border-b-gray-400 justify-self-end"
 				/>
+
 				<p className="text-xs">
-					<a href="https://fanoulis.dev" className="underline">
+					<a href="https://fanoulis.dev" className="underline hover:italic">
 						char
 					</a>{' '}
 					made this happen - and it&apos;s{' '}
-					<a href="https://github.com/cfanoulis/hugmyalbum" className="underline">
+					<a href="https://github.com/cfanoulis/hugmyalbum" className="underline hover:italic">
 						open-source
 					</a>
 				</p>
 			</div>
-			<ChandlerGenerator albumUrl={spotifyUrl} />
+			<div>
+				{error && (
+					<>
+						<p>Something broke: {error}</p>
+					</>
+				)}
+				<ChandlerCanvas artBlob={coverArtBlob} show={coverArtBlob && !error} />
+			</div>
 		</div>
 	);
 };
