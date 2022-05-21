@@ -1,8 +1,8 @@
 /*eslint-disable no-undef*/
 const { openSync } = require('fs');
-const { launchBus, start } = require('pm2');
+const pm2 = require('pm2');
 
-start(
+pm2.start(
 	{
 		name: 'album-hugger',
 		node_args: '-r dotenv/config',
@@ -24,7 +24,7 @@ start(
 		}
 
 		// Display logs in standard output
-		launchBus(function (err, bus) {
+		pm2.launchBus(function (err, bus) {
 			console.log('[PM2] Log streaming started');
 
 			bus.on('log:out', function (packet) {
