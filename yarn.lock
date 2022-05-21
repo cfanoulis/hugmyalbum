@@ -20276,6 +20276,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"prettier-plugin-tailwindcss@npm:^0.1.11":
+  version: 0.1.11
+  resolution: "prettier-plugin-tailwindcss@npm:0.1.11"
+  peerDependencies:
+    prettier: ">=2.2.0"
+  checksum: 16a905551a075cca6540328892f16b6fc677d2d8e3627ae930ee6255f3c5e5e197c158a755fb82a130a909b6b51c1cb2ff13aca4fc0cea49d30304eb3ed23ab7
+  languageName: node
+  linkType: hard
+
 "prettier@npm:2.6.2, prettier@npm:^2.2.1, prettier@npm:^2.6.2":
   version: 2.6.2
   resolution: "prettier@npm:2.6.2"
@@ -21779,6 +21788,7 @@ __metadata:
     "@redwoodjs/core": ^1.4.2
     "@sapphire/prettier-config": ^1.4.3
     pm2: ^5.2.0
+    prettier-plugin-tailwindcss: ^0.1.11
   languageName: unknown
   linkType: soft
 

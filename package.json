@@ -32,6 +32,7 @@
 	"prettier": "@sapphire/prettier-config",
 	"dependencies": {
 		"@redwoodjs/core": "^1.4.2",
-		"pm2": "^5.2.0"
+		"pm2": "^5.2.0",
+		"prettier-plugin-tailwindcss": "^0.1.11"
 	}
 }

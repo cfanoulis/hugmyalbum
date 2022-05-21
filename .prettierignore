@@ -6,3 +6,6 @@ node_modules
 .nvmrc
 *.toml
 yarn.lock
+api/dist
+web/dist
+*.env*
