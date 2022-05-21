@@ -1,10 +1,10 @@
 /*eslint-disable no-undef*/
-import { openSync } from 'fs';
-import { launchBus, start } from 'pm2';
+const { openSync } = require('fs');
+const { launchBus, start } = require('pm2');
 
 start(
 	{
-		name: 'album-hugger', // Change this to whatever you want
+		name: 'album-hugger',
 		node_args: '-r dotenv/config',
 		script: './node_modules/@redwoodjs/api-server/dist/index.js',
 		args: `-f api/dist/functions --socket /tmp/nginx.socket`,
@@ -12,6 +12,7 @@ start(
 			NODE_ENV: 'production'
 		}
 	},
+
 	function (err) {
 		if (err) return console.error('Error while launching applications', err.stack || err);
 
