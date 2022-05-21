@@ -34,7 +34,7 @@ export const handler = async (event: APIGatewayEvent) => {
 	const redis = useRedis();
 	const cachedEntry = await redis.get(itemId);
 	if (cachedEntry) {
-		logger.trace('CACHE HIT! BOOM!');
+		logger.info('CACHE HIT! BOOM!');
 		await redis.quit();
 		return {
 			statusCode: 200,
