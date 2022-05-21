@@ -14,7 +14,7 @@
 		"lint": "eslint --fix **/* --ext ts,tsx,js,jsx",
 		"format": "prettier --write **/*",
 		"fmt": "yarn format",
-		"build": "rw build",
+		"build": "rw build -v --no-db",
 		"start": "node index.js"
 	},
 	"eslintConfig": {
