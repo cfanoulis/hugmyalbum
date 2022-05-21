@@ -43,15 +43,15 @@ const GeneratorPage = () => {
 	}, []);
 
 	return (
-		<div className="h-screen w-screen flex flex-col lg:flex-row lg:justify-center lg:items-center break-words p-2">
+		<div className="flex h-screen w-screen flex-col break-words p-2 lg:flex-row lg:items-center lg:justify-center">
 			<MetaTags
 				title="Chandler, hug my album"
 				description="Chandler wants some music to vide to. Give him reccomendations and see him jam to them"
 				author="Charalampos Fanoulis"
 			/>
 
-			<div className="lg:mr-8 mb-8 flex flex-col">
-				<h1 className="font-bold text-2xl mb-4">Let Chandler hug your favourite album</h1>
+			<div className="mb-8 flex flex-col lg:mr-8">
+				<h1 className="mb-4 text-2xl font-bold">Let Chandler hug your favourite album</h1>
 
 				<label htmlFor="spotifyInput" className="text-xs">
 					Spotify album URL
@@ -61,7 +61,7 @@ const GeneratorPage = () => {
 					ref={inputElem}
 					placeholder="https://open.spotify.com/album/2ZYRap1o9GuuxOXwY1FHev?si=eO8x9R5RQT23u43RVNyS7A"
 					type="url"
-					className="align-right bg-gray-50 lg:p-2 p-1 mb-6 border-b-2 border-b-gray-400 justify-self-end"
+					className="align-right mb-6 justify-self-end border-b-2 border-b-gray-400 bg-gray-50 p-1 lg:p-2"
 				/>
 
 				<p className="text-xs">

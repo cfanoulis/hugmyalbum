@@ -9,3 +9,6 @@ yarn.lock
 api/dist
 web/dist
 *.env*
+robots.txt
+*.png*
+Procfile
