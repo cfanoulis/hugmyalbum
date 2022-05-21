@@ -23,7 +23,7 @@ const ChandlerCanvas = (props: { artBlob?: Blob; show: boolean }) => {
 
 	return (
 		<>
-			<canvas ref={canvasRef} height={500} width={500} className={`${props.show ? 'visible' : 'hidden'}`}></canvas>
+			<canvas ref={canvasRef} height={500} width={500} className={`${props.show ? 'visible' : 'hidden'} w-full max-w-fit`}></canvas>
 			{/* https://developer.mozilla.org/en-US/docs/Web/API/OffscreenCanvas */}
 			<canvas ref={albumCanvasRef} height={400} width={400} hidden></canvas>
 		</>

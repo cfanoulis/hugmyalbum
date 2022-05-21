@@ -43,7 +43,7 @@ const GeneratorPage = () => {
 	}, []);
 
 	return (
-		<div className="flex h-screen w-screen flex-col break-words p-2 lg:flex-row lg:items-center lg:justify-center">
+		<div className="flex h-screen w-screen flex-col p-2 lg:flex-row lg:items-center lg:justify-center">
 			<MetaTags
 				title="Chandler, hug my album"
 				description="Chandler wants some music to vide to. Give him reccomendations and see him jam to them"
@@ -51,7 +51,7 @@ const GeneratorPage = () => {
 			/>
 
 			<div className="mb-8 flex flex-col lg:mr-8">
-				<h1 className="mb-4 text-2xl font-bold">Let Chandler hug your favourite album</h1>
+				<h1 className="mb-4 break-words text-3xl font-bold lg:text-2xl">Let Chandler hug your favourite album</h1>
 
 				<label htmlFor="spotifyInput" className="text-xs">
 					Spotify album URL
@@ -61,15 +61,15 @@ const GeneratorPage = () => {
 					ref={inputElem}
 					placeholder="https://open.spotify.com/album/2ZYRap1o9GuuxOXwY1FHev?si=eO8x9R5RQT23u43RVNyS7A"
 					type="url"
-					className="align-right mb-6 justify-self-end border-b-2 border-b-gray-400 bg-gray-50 p-1 lg:p-2"
+					className="mb-6 border-b-2 border-b-gray-400 bg-gray-50 p-1 lg:p-2"
 				/>
 
 				<p className="text-xs">
-					<a href="https://fanoulis.dev" className="underline hover:italic">
+					<a href="https://fanoulis.dev" className="underline hover:italic active:italic">
 						char
 					</a>{' '}
 					made this happen - and it&apos;s{' '}
-					<a href="https://github.com/cfanoulis/hugmyalbum" className="underline hover:italic">
+					<a href="https://github.com/cfanoulis/hugmyalbum" className="underline hover:italic active:italic">
 						open-source
 					</a>
 				</p>
