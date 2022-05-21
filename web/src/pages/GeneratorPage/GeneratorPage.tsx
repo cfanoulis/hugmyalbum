@@ -29,8 +29,17 @@ const GeneratorPage = () => {
 					ref={inputElem}
 					placeholder="https://open.spotify.com/album/2ZYRap1o9GuuxOXwY1FHev?si=eO8x9R5RQT23u43RVNyS7A"
 					type="url"
-					className="align-right bg-gray-50 lg:p-2 p-1 border-b-2 border-b-gray-400 justify-self-end"
+					className="align-right bg-gray-50 lg:p-2 p-1 mb-6 border-b-2 border-b-gray-400 justify-self-end"
 				/>
+				<p className="text-xs">
+					<a href="https://fanoulis.dev" className="underline">
+						char
+					</a>{' '}
+					made this happen - and it&apos;s{' '}
+					<a href="https://github.com/cfanoulis/hugmyalbum" className="underline">
+						open-source
+					</a>
+				</p>
 			</div>
 			<ChandlerGenerator albumUrl={spotifyUrl} />
 		</div>
