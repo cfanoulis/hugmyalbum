@@ -2,8 +2,8 @@ import { Canvas, resolveImage } from 'canvas-constructor/browser';
 import { useEffect, useRef } from 'react';
 
 const ChandlerCanvas = (props: { artBlob?: Blob; show: boolean }) => {
-	const canvasRef = useRef();
-	const albumCanvasRef = useRef();
+	const canvasRef = useRef<HTMLCanvasElement>();
+	const albumCanvasRef = useRef<HTMLCanvasElement>();
 
 	useEffect(() => {
 		(async () => {
@@ -23,9 +23,20 @@ const ChandlerCanvas = (props: { artBlob?: Blob; show: boolean }) => {
 
 	return (
 		<>
-			<canvas ref={canvasRef} height={500} width={500} className={`${props.show ? 'visible' : 'hidden'} w-full max-w-fit`}></canvas>
-			{/* https://developer.mozilla.org/en-US/docs/Web/API/OffscreenCanvas */}
-			<canvas ref={albumCanvasRef} height={400} width={400} hidden></canvas>
+			<button
+				onClick={(e) => {
+					e.preventDefault();
+					const link = document.createElement('a');
+					link.href = canvasRef.current?.toDataURL('image/octet-stream');
+					link.download = 'chandler.png';
+					link.click();
+				}}
+				className={`${props.show ? 'visible' : 'hidden'} w-full max-w-fit`}
+			>
+				<canvas ref={canvasRef} height={500} width={500}></canvas>
+				{/* https://developer.mozilla.org/en-US/docs/Web/API/OffscreenCanvas */}
+				<canvas ref={albumCanvasRef} height={400} width={400} hidden></canvas>
+			</button>
 		</>
 	);
 };
