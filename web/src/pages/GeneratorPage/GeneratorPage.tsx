@@ -17,23 +17,27 @@ const GeneratorPage = () => {
 		if (!albumUrl) return;
 
 		// get album cover art from spotify API
-		const coverArtUrlReq = await fetch('api/getSpotifyAlbumArt', {
+		const covArtUrl = await fetch('api/getSpotifyAlbumArt', {
 			method: 'POST',
 			body: albumUrl
+		}).then(async (r) => {
+			if (r.status !== 200) {
+				setError(await r.text());
+				return;
+			}
+			return r.text();
 		});
-		if (coverArtUrlReq.status !== 200) {
-			setError(await coverArtUrlReq.text());
-			return;
-		}
 
 		// Get img data
-		const coverArtBlobReq = await fetch(await coverArtUrlReq.text());
-		if (coverArtBlobReq.status !== 200) {
-			setError(await coverArtUrlReq.text());
-			return;
-		}
+		const coverArtBlob = await fetch(covArtUrl).then(async (r) => {
+			if (r.status !== 200) {
+				setError(await r.text());
+				return;
+			}
+			return r.blob();
+		});
 
-		setCoverArt(await coverArtBlobReq.blob());
+		setCoverArt(coverArtBlob);
 	}, 750);
 
 	useEffect(() => {
@@ -54,7 +58,7 @@ const GeneratorPage = () => {
 				<h1 className="mb-4 break-words text-3xl font-bold lg:text-2xl">Let Chandler hug your favourite album</h1>
 
 				<label htmlFor="spotifyInput" className="text-xs">
-					Spotify album URL
+					Spotify track or album URL
 				</label>
 				<input
 					id="spotifyInput"
@@ -80,7 +84,7 @@ const GeneratorPage = () => {
 						<p>Something broke: {error}</p>
 					</>
 				)}
-				<ChandlerCanvas artBlob={coverArtBlob} show={coverArtBlob && !error} />
+				<ChandlerCanvas artBlob={coverArtBlob} show={typeof coverArtBlob !== 'undefined' && !error} />
 			</div>
 		</div>
 	);
